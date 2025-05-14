@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Player</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background-size: cover;
+            color: #fff;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        h2 {
+            text-align: center;
+            color: #cf11a6;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        box-sizing: border-box;
+         }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #28a745;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        /* Side image styles */
+        .side-images {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .left-images {
+            left: 90px;
+        }
+
+        .right-images {
+            right: 90px;
+        }
+
+        .side-images img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+        .logout-btn {
+      position: absolute;
+      top: 20px;
+      right: 10px;
+    }
+
+    .logout-btn form {
+      margin: 0;
+    }
+
+    .logout-btn button {
+      background-color: #dc3545;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .logout-btn button:hover {
+      background-color: #c82333;
+    }
+    </style>
+</head>
+<body>
+
+<div class="side-images left-images">
+    <img src="{% static 'images/csk.jpeg' %}" alt="Left Image 1">
+    <img src="{% static 'images/gt.png' %}" alt="Left Image 2">
+    <img src="{% static 'images/lsg.jpeg' %}" alt="Left Image 3">
+    <img src="{% static 'images/kkr.jpeg' %}" alt="Left Image 4">
+    <img src="{% static 'images/mi.jpeg' %}" alt="Left Image 5">
+</div>
+
+<div class="form-container">
+    <h2>Create IPL Player</h2>
+    <form action="/create/" method="POST">
+        {% csrf_token %}
+        <label for="jn">Jersey No:</label>
+        <input type="number" placeholder="Enter jersey number" name="jn" required>
+
+        <label for="pn">Name:</label>
+        <input type="text" placeholder="Enter player name" name="pn" required>
+
+        <label for="rl">Role:</label>
+        <input type="text" placeholder="Enter role" name="rl" required>
+
+        <label for="tn">Team:</label>
+        <input type="text" placeholder="Enter team name" name="tn" required>
+
+        <button type="submit">Add Player</button>
+    </form>
+</div>
+
+<div class="side-images right-images">
+    <img src="{% static 'images/pnj.jpeg' %}" alt="Right Image 1">
+    <img src="{% static 'images/rcb.jpeg' %}" alt="Right Image 2">
+    <img src="{% static 'images/rr.jpeg' %}" alt="Right Image 3">
+    <img src="{% static 'images/srh.jpeg' %}" alt="Right Image 4">
+    <img src="{% static 'images/dc.png' %}" alt="Right Image 5">
+</div>
+<div class="logout-btn">
+    <form action="/logout/" method="POST">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
+  </div>
+
+</body>
+</html>
