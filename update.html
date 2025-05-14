@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form input[type="text"],
+        form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+    </style>
+</head
+<body>
+
+    <div class="form-container">
+        <h2 style="color: blueviolet;">Update Player {{ob.pname}}</h2>
+        <form action="/update/{{ob.jer_no}}" method="POST">
+            {% csrf_token %}
+            <label for="jn" >Jersey No: </label>
+            <input type="number" value={{ob.jer_no}} name="jn" required>
+
+            <label for="pn">Name:</label>
+            <input type="text" value={{ob.pname}} name="pn" required>
+
+            <label for="rl">Role:</label>
+            <input type="text" value={{ob.role}} name="rl" required>
+
+            <label for="tn">Team:</label>
+            <input type="text" value={{ob.team}} name="tn" required>
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+
+</body>
+</html>
