@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Players</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5); /* Gradient background */
+            color: #333;
+        }
+
+        h3 {
+            color: #003366;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #e9f1f7;
+            color: #003366;
+        }
+
+        tr:hover {
+            background-color: #f1f9ff;
+        }
+
+        a.button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        a.button:hover {
+            background-color: #218838;
+        }
+
+        .action-links a {
+            margin: 0 5px;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .action-links a:hover {
+            text-decoration: underline;
+        }
+
+        .center-btn {
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <img src="{% static 'images/download.png' %}" alt="Logo" width="120">
+    </div>
+    
+
+
+    <h3>Display All Players from Database</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Jersey No</th>
+                <th>Player Name</th>
+                <th>Role</th>
+                <th>Team Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>{{ i.jer_no }}</td>
+                <td>{{ i.pname }}</td>
+                <td>{{ i.role }}</td>
+                <td>{{ i.team }}</td>
+                <td class="action-links">
+                    <a href="/delete/{{ i.jer_no }}">Delete</a>
+                    <a href="/update/{{ i.jer_no }}">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="center-btn">
+        <a href="/create/" class="button">Add Players</a>
+    </div>
+
+</body>
+</html>
