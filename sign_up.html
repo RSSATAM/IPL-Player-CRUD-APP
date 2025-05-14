@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+   
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    
+    .container {
+        width: 350px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .form-control {
+        margin-bottom: 15px;
+    }
+    
+    label {
+        font-weight: bold;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"] {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    small {
+        color: #999;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+    
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+    
+</head>
+<body>
+    <div class="container">
+        <form action="/sign/" method="POST"> 
+            {% csrf_token %}
+            <h2>Sign Up</h2>
+            <div class="form-control">
+                <label for="username">Username:</label>
+                <input type="text" placeholder="Enter username" name="un" required>
+            </div>
+            <div class="form-control">
+                <label for="password">Password:</label>
+                <input type="text" placeholder="Enter password" name="pas" required>
+            </div>
+            <div class="form-control">
+                <label for="email">Email:</label>
+                <input type="text" placeholder="Enter mail" name="mail" required>
+            </div>
+            <div class="form-control">
+                <label for="phone">Phone Number:</label>
+                <input type="text" placeholder="Enter phon enumver " name="ph" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        {% if err%}
+          
+           <P style="text-align: center; color: red;">{{err}}</P>
+        {% endif %}
+    </div>
+</body>
+</html>
